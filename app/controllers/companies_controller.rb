@@ -1,6 +1,8 @@
 class CompaniesController < ApplicationController
+  before_action :check_permission, only: %i[create show update destroy]
+
   def index
-    @companies = Company.order(:id)
+    @companies = Company.order('created_at DESC')
     @company = Company.new
   end
 
@@ -34,5 +36,10 @@ class CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
     respond_to :js
+  end
+
+
+  def check_permission
+    redirect_to root_path, alert: 'No posee los permisos necesarios.' and return unless current_user
   end
 end

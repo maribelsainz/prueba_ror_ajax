@@ -9,3 +9,4 @@ class ComplainsController < ApplicationController
     respond_to :js
   end
 end
+
