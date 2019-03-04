@@ -1,0 +1,2 @@
+$('.modal-body').html("<h3><%= @company.name %></h3> <%= j render 'complain_form', company: @company, complain: Complain.new %>")
+$('#modal-edit').modal('show')

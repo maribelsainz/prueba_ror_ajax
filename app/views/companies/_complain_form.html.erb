@@ -1,0 +1,11 @@
+<%= form_with(model: [company, complain]) do |f| %>
+<%= f.label :content %>
+<%= f.text_field :content %>
+<%= f.submit %>
+<% end %>
+
+<ul id= "company_complains_list">
+<% company.complains.each do |c| %>
+<li><%= c.content %></li>
+<% end %>
+</ul>
