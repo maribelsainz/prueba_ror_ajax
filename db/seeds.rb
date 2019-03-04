@@ -18,13 +18,20 @@ end
 
 30.times do
   User.create(
-    name: Faker::FunnyName.name,
-    email: Faker::Internet.email
+    # name: Faker::FunnyName.name,
+    email: Faker::Internet.email,
+    password: 123456
   )
 end
 
+users = User.all
+
 250.times do
   Complain.create(
-    content: Faker::Lorem.sentence
+    content: Faker::Lorem.sentence,
+    user: users.sample
   )
 end
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
